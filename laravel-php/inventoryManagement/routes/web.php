@@ -18,3 +18,4 @@ use App\Http\Controllers\SupplierController;
 
 Route::resource('products', ProductController::class);
 Route::resource('suppliers', SupplierController::class);
+

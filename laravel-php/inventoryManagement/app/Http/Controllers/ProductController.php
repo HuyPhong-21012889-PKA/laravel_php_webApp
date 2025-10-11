@@ -11,6 +11,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('products.index', compact('products'));
+        return response()->json(Product::all());
     }
 
     public function create()
@@ -20,15 +21,22 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name'     => 'required|string',
-            'sku'      => 'required|string|unique:products',
-            'price'    => 'nullable|numeric',
-            'quantity' => 'nullable|integer|min:0',
+        // Validate dữ liệu từ client
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'sku' => 'required|string|unique:products,sku',
+            'price' => 'required|numeric|min:0',
+            'quantity' => 'required|integer|min:0',
         ]);
 
-        Product::create($request->all());
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        // Lưu vào database
+        $product = Product::create($validated);
+
+        // Trả về JSON response
+        return response()->json([
+            'message' => 'Product created successfully!',
+            'data' => $product
+        ], 201);
     }
 
     public function edit(Product $product)
