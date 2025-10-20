@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-between mb-3">
-    <h1>Inventory List</h1>
-    <a href="{{ route('inventories.create') }}" class="btn btn-success">Add New Inventory</a>
-</div>
+<h1>Danh sách hàng tồn kho</h1>
 
-@if(session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
+<a href="{{ route('inventories.create') }}" class="btn btn-primary mb-3">+ Thêm hàng tồn kho</a>
+
+@if (session('success'))
+    <div class="alert alert-success mt-3">
+        {{ session('success') }}
+    </div>
 @endif
 
 <table class="table table-bordered table-striped">

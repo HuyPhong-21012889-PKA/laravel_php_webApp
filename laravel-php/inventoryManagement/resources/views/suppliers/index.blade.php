@@ -4,6 +4,12 @@
 <h1>Danh sách nhà cung cấp</h1>
 <a href="{{ route('suppliers.create') }}" class="btn btn-primary mb-3">+ Thêm nhà cung cấp</a>
 
+@if (session('success'))
+    <div class="alert alert-success mt-3">
+        {{ session('success') }}
+    </div>
+@endif
+
 <table class="table table-bordered">
     <thead>
         <tr>

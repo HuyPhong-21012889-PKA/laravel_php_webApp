@@ -32,11 +32,13 @@ class ProductController extends Controller
         // Lưu vào database
         $product = Product::create($validated);
 
-        // Trả về JSON response
-        return response()->json([
-            'message' => 'Product created successfully!',
-            'data' => $product
-        ], 201);
+        return redirect()->route('products.index')->with('success', 'Product cretaed successfully.');
+
+        // // Trả về JSON response
+        // return response()->json([
+        //     'message' => 'Product created successfully!',
+        //     'data' => $product
+        // ], 201);
     }
 
     public function edit(Product $product)

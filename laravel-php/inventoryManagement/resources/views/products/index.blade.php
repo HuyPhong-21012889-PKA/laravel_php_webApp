@@ -2,6 +2,13 @@
 
 @section('content')
 <h1>Danh sách sản phẩm</h1>
+
+@if (session('success'))
+    <div class="alert alert-success mt-3">
+        {{ session('success') }}
+    </div>
+@endif
+
 <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">+ Thêm sản phẩm</a>
 
 <table class="table table-bordered">

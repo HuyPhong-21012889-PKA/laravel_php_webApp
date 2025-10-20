@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>Thêm nhà cung cấp</h1>
+
 <form action="{{ route('suppliers.store') }}" method="POST">
     @csrf
     <div class="mb-3">

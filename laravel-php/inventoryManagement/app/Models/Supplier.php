@@ -11,8 +11,8 @@ class Supplier extends Model
 
     protected $fillable = [
         'name',
-        'email',
-        'phone'
+        'phone',
+        'address'
     ];
 
     // Quan hệ với Inventory
